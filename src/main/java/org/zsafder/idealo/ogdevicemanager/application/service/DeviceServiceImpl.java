@@ -37,12 +37,9 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     public Device updateDevice(Long id, Device device) {
         Device existingDevice = deviceRepository.findById(id).orElseThrow(() -> new DeviceNotFoundException(id));
-        if (existingDevice != null) {
-            device.setId(id);
-            device.setCreationTime(existingDevice.getCreationTime());
-            return deviceRepository.save(device);
-        }
-        return null;
+        device.setId(id);
+        device.setCreationTime(existingDevice.getCreationTime());
+        return deviceRepository.save(device);
     }
 
     @Override

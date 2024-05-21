@@ -11,12 +11,6 @@ import org.zsafder.idealo.ogdevicemanager.domain.exception.DeviceNotFoundExcepti
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({AccessDeniedException.class, AuthenticationException.class})
-    @ResponseBody
-    public ResponseEntity<String> handleForbiddenException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Forbidden access: " + ex.getMessage());
-    }
-
     @ExceptionHandler(DeviceNotFoundException.class)
     @ResponseBody
     public ResponseEntity<String> handleNoSuchElementException(DeviceNotFoundException ex) {
